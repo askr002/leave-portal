@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://accounts.google.com/gsi/client; frame-src https://accounts.google.com/gsi/; connect-src 'self' https://script.google.com https://script.googleusercontent.com https://accounts.google.com/gsi/; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://accounts.google.com/gsi/style; font-src https://fonts.gstatic.com; img-src 'self' data: https://*.googleusercontent.com">
+  <title>Leave portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="config.js"></script>
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <section id="signin" class="signin" hidden>
+    <div class="signin-panel">
+      <div class="signin-mark" aria-hidden="true">
+        <span></span><span></span><span class="on"></span><span class="on"></span><span></span>
+      </div>
+      <h1>Leave portal</h1>
+      <p class="signin-org" id="signin-org"></p>
+      <p>Sign in with your work Google account to request leave and see your balance.</p>
+      <div id="gsi-button" class="gsi-button"></div>
+      <p class="signin-error" id="signin-error" role="alert" hidden></p>
+    </div>
+  </section>
+
+  <div id="app" hidden>
+    <header class="topbar">
+      <div class="topbar-inner">
+        <span class="brand">Leave portal</span>
+        <nav class="tabs" id="tabs" aria-label="Sections"></nav>
+        <div class="who">
+          <span id="who-name"></span>
+          <button type="button" class="link-button" id="report-bug" hidden>Report a problem</button>
+          <button type="button" class="link-button" id="signout">Sign out</button>
+        </div>
+      </div>
+    </header>
+    <main id="main" tabindex="-1"></main>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+  <dialog id="reason-dialog">
+    <form method="dialog" class="dialog-form">
+      <h2 id="reason-title">Give a reason</h2>
+      <p id="reason-help"></p>
+      <label for="reason-input">Reason</label>
+      <textarea id="reason-input" rows="3" maxlength="500" required></textarea>
+      <div class="dialog-actions">
+        <button type="button" class="button quiet" id="reason-cancel">Keep it</button>
+        <button type="submit" class="button danger" id="reason-confirm" value="confirm">Confirm</button>
+      </div>
+    </form>
+  </dialog>
+</body>
+</html>
